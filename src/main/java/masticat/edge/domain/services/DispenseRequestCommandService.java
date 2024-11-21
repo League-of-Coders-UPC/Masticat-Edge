@@ -1,12 +1,10 @@
 package masticat.edge.domain.services;
 
+import java.util.Optional;
 import masticat.edge.domain.model.commands.CreateDispenseRequestCommand;
-import masticat.edge.domain.model.commands.DeleteDispenseRequestCommand;
+import masticat.edge.domain.model.entities.Device;
 
 public interface DispenseRequestCommandService {
 
-  Long handle(CreateDispenseRequestCommand command);
-
-  void handle(DeleteDispenseRequestCommand command);
-
+  Optional<Device> handle(CreateDispenseRequestCommand command);
 }

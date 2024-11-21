@@ -7,7 +7,7 @@ public class CreateDispenseRequestCommandFromResourceAssembler {
 
   public static CreateDispenseRequestCommand toCommandFromResource(
       CreateDispenseRequestResource resource) {
-    return new CreateDispenseRequestCommand(resource.deviceUuid(), resource.type(), resource.amount());
+    return new CreateDispenseRequestCommand(resource.deviceId(), resource.type(), resource.quantity(), resource.action());
   }
 
 }

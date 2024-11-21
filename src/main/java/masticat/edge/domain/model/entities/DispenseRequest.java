@@ -1,35 +1,34 @@
 package masticat.edge.domain.model.entities;
 
-import jakarta.persistence.Entity;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
+import masticat.edge.domain.model.valueobjects.DispenseRequestAction;
 import masticat.edge.domain.model.valueobjects.DispenseRequestType;
 
-@Entity
 @Getter
 @Setter
 public class DispenseRequest {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long id;
-
-  private String deviceUuid;
+  @JsonProperty("device_id")
+  private String deviceId;
 
   @Enumerated(EnumType.STRING)
   private DispenseRequestType type;
 
-  private Float amount;
+  private Float quantity;
 
-  public DispenseRequest(String deviceUuid, DispenseRequestType type, Float amount) {
-    this.deviceUuid = deviceUuid;
+  @Enumerated(EnumType.STRING)
+  private DispenseRequestAction action;
+
+  public DispenseRequest(String deviceId, DispenseRequestType type, Float quantity,
+      DispenseRequestAction action) {
+    this.deviceId = deviceId;
     this.type = type;
-    this.amount = amount;
+    this.quantity = quantity;
+    this.action = action;
   }
 
   public DispenseRequest() {
